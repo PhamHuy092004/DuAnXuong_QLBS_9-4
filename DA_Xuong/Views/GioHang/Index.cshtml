@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DA_Xuong.Models.GIOHANGITEMS>
+@{
+    double total = Model.Sum(item => item.TONG);
+}
+<div class="row">
+    <div class="col-md-7">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr class="text-center" style="background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147)); color:white">
+                        <th scope="col">Ảnh</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Tổng</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                         <tr class="text-center">
+                            <td>
+                                <img src="@Url.Content(item.HINHANH)" alt="Ảnh sản phẩm" style="width: 100px; height: 100px;">
+                            </td>
+                            <td><strong>@item.TIEUDE</strong></td>
+                            <td>@item.GIA.ToString("#,##0") đồng</td>
+                            <td class="text-center">@item.SOLUONG</td>
+                            <td class="text-danger">@item.TONG.ToString("#,##0") đồng</td>
+                            <td><button class="btn btn-outline-danger">Xóa</button></td>
+                         </tr>
+                    }              
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div>
+          
+                <h4  class="text-center" style="background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147)); color:white">THANH TOÁN</h4>
+    
+          
+            <hr />
+            <p><span class="fw-bolder">Tổng cộng:</span> <span class="text-danger">@total.ToString("#,##0") đồng</span></p>
+            <div class="form-group">
+                <label for="deliveryType" class="fw-bolder">Loại giao hàng:</label>
+                <select class="form-control" id="deliveryType">
+                    <option value="standard">Tiêu chuẩn</option>
+                    <option value="express">Nhanh</option>
+                    <option value="premium">Premium</option>
+                </select>
+            </div>
+            <hr />
+            <a href="/ThanhToan/ThanhToan" class="btn btn-outline-danger btn-block mt-3">Tiến hành thanh toán</a>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label for="promoCode" class="fw-bolder">Mã ưu đãi</label>
+            <input type="text" class="form-control" id="promoCode" placeholder="Nhập mã ưu đãi">
+        </div>
+        <button class="btn btn-secondary btn-block mt-2">Áp dụng</button>
+    </div>
+</div>

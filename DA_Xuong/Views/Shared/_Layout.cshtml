@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - DA_Xuong</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/DA_Xuong.styles.css" asp-append-version="true" />
+</head>
+<style></style>
+<body>
+
+	<header>
+		@*         <div class="row" style="background-color:aquamarine; width:100%">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		<p class="word_header">Sách giá rẻ liên hệ tại <n class="text-warning link_header">TẠI ĐÂY</n></p>
+		<img src="IMG/Sale.png" />
+		<img src="IMG/Rectangle 5.png" />
+		</div>
+		<div class="col-md-4">
+		<button class="button_muangay">MUA NGAY</button>
+		</div>
+
+
+
+		</div> *@
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid d-flex justify-conten-center align-content-end">
+				<div class="navbar-brand d-flex align-items-center">
+					<div class="float-end" style="margin-right: 20px;">
+						<a href="@Url.Action("Index", "Home")" style="text-decoration: none;">
+							<img src="~/IMG/Rectangle 28.png" style="width: 75px; height: 75px;" />
+							<span class="text-warning fw-bold fs-3" style="margin-left: 10px;">BOOKLAND</span>
+						</a>
+					</div>
+
+				</div>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown">
+							<n class="nav-link dropdown-toggle fw-bolder" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 .5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10A.5.5 0 0 1 4 .5m-4 2A.5.5 0 0 1 .5 2h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 8h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+								</svg> Danh mục sản phẩm
+							</n>
+							<ul class="dropdown-menu" style="padding:20px;" aria-labelledby="navbarDropdownMenuLink">
+								<div class="row">
+									<div class="col-md-6">
+										<p class="fw-bolder">Hình thức</p>
+										<p class="fw-bolder">Tác giả</p>
+										<p class="fw-bolder">Nhà xuất bản</p>
+									</div>
+									<div class="col-md-6">
+										<span class="fw-bolder">Thể loại sách đọc</span>
+										<span class="dropdown-item">Danh mục sách ngoại văn</span>
+										<span class="dropdown-item">Danh mục sách kinh tế</span>
+										<span class="dropdown-item">Danh mục sách khoa học</span>
+										<span class="dropdown-item">Danh mục sách tự truyện</span>
+									</div>
+								</div>
+							</ul>
+						</li>
+
+						<!-- Tìm kiếm -->
+						<li class="nav-item">
+
+							<div class="row">
+								<div class="col-md-3"></div>
+								<div class="col-md-9">
+									<div class="input-group">
+										<input type="text" class="form-control search_input" placeholder="Tìm kiếm..." style=" color:green; border-color:green;">
+										<button class="btn btn-outline-success" type="button">Tìm kiếm</button>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item " style="margin-left:30px">
+							<div class="text-center" style="margin-right: 20px;">
+								<div class="icon-container">
+									<a href="/Home/SanPham">
+										<img class="icon" src="~/IMG/User heart.png" alt="User Heart" />
+									</a>
+									<span>Dành cho bạn</span>
+								</div>
+								<div class="icon-container">
+									<a href="/ThanhToan/ThanhToan">
+										<img class="icon" src="~/IMG/Message.png" alt="Message" />
+									</a>
+								</div>
+								<div class="icon-container">
+									<a href="/Sale/Index">
+										<img class="icon" src="~/IMG/Bell.png" alt="Bell" />
+									</a>
+								</div>
+								<div class="icon-container">
+                                    <a href="/GioHang/Index">
+                                        <img class="icon" src="~/IMG/Shopping cart.png" alt="Shopping Cart" />
+										</a>
+									
+								</div>
+								<div class="icon-container">
+									<a href="/Account/Index">
+										<img class="icon" src="~/IMG/user.png" alt="User" />
+										</a>
+								
+								</div>
+								
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+
+	</header>
+	<article>
+		
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</article>
+
+	<div class="row" style="background-color:#269E86;height:300px">
+		<div class="col-md-6 d-flex justify-content-center align-items-center">
+			<div style="display: flex; align-items: center;">
+				<img src="~/IMG/Vector (1).png" style="width: 90px; margin-right: 10px;" />
+				<div>
+					<p class="text-light">
+						Đăng ký nhận bảng tin từ BOOKLAND<br />
+						Nhận các ưu đãi độc quyền, các sản phẩm mới và các flashdeal
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 d-flex justify-content-center align-items-center">
+			<form style="width: 80%;">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Email của bạn" aria-label="Email của bạn" aria-describedby="basic-addon2">
+					<button class="btn btn-success btn-sm" type="submit">Gửi ngay</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<footer>
+
+
+		<div class="row">
+
+			<div class="row justify-content-center">
+				<img src="~/IMG/Thương hiệu.png" style="width:auto;" />
+			</div>
+
+
+
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<p class="fs-4 fw-bolder">Thông tin hỗ trợ</p>
+					<p>Trụ sở chính:  Lầu 1 Toà nhà Pastuer, 139 Pastuer, P. 6, Q.3, TP. HCM | Xem bản đồ </p>
+					<p>Điện thoại: 1900 7865 15 | Liên hệ</p>
+					<p>Email: cskh@booklandvietnam.com</p>
+				</div>
+				<div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+					<div class="row justify-content-center">
+						<img src="~/IMG/Rectangle 28.png" style="width:auto;" />
+					</div>
+					<div class="row justify-content-center">
+						<n class="text-warning fw-bold fs-3">BOOKLAND</n>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<p class="fw-bolder fs-4">ỨNG DỤNG BOOKLAND</p>
+					<div class="row">
+						<div class="col-md-4">
+							<img src="/IMG/QR.png" style="width:auto;height:auto" />
+						</div>
+						<div class="col-md-8">
+							<p>
+								Hệ điều hành IOS <br />
+								Phiên bản ứng dụng: 3.9 <br />
+								Ngày đăng: 06/12/2019 <br />
+								Hệ điều hành Android <br />
+								Phiên bản ứng dụng: 3.9 <br />
+								Ngày đăng: 06/12/2019
+							</p>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+	</footer>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

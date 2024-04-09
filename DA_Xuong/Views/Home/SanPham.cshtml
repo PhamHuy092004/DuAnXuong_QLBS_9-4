@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewData["Title"] = "SanPham";
+}
+
+@* <h1>SanPham</h1> *@
+@model IEnumerable<DA_Xuong.Models.SACH>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - DA_Xuong</title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/chuong.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css">
+<style>
+    .text-context{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        
+    }
+</style>
+<div class="tieude ms-4 my-4">
+        <a href="">Trang chủ ></a>
+        <a href="">Sách đọc ></a>
+        <a href="" style="color:mediumaquamarine;">Tâm lý phát triển cá nhân</a>
+    </div>
+    <div class="alert alert-light ms-4" role="alert">
+        <h5>Tâm lý - phát triển cá nhân</h5>
+    </div>
+    <div class="row mt-5" style="justify-content: center;">
+    @foreach(var item in Model)
+    {
+        <div class="col-sm-3 ms-3 border border-2"
+             style="width: 23%;height: 300px; border-radius: 15px; position: relative;">
+            <div class="row g-0">
+                <div class="col-sm-6">
+                    <img src="@Url.Content(item.HINHANH)" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-sm-6 mt-4 h-100">
+                    <div class="text-uppercase fw-bold ms-2">@item.TIEUDE</div>
+                    <div class="text-secondary ms-2">@item.TacGia.TENTACGIA</div><br>
+                    <span class="fa fa-star checked ms-2"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <div class="mt-2 ms-2 text-context" style="font-size: 14px;">@item.MOTA</div>
+                    <div style="color: tomato; font-size: 22px;" class="ms-2">@item.GIA.ToString("#,##0") VND</div>
+                </div>
+            </div>
+            <div class="">
+                <div class="row mt-2">
+                    <div class="col-sm-5 ms-3">
+                        <button class="btn" type="button"
+                                style="width: 140px; color: white; border-radius: 10px; background-color: #269E86;">
+                            MUA
+                            NGAY
+                        </button>
+                    </div>
+                    <div class="col-sm-5 ms-4">
+                        <button class="btn" type="button"
+                                style="width: 100px;color: white;margin-left: 5px;border-radius: 10px; background-color: #426D9C;">
+                            CHI
+                            TIẾT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+   
+
+    </div>
+
+    <div class="row mt-4">
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination ms-4">
+                    <li class="page-item"><a class="page-link me-3" href="#" style="border: none;">< </a></li>
+                    <li class="page-item"><a class="page-link me-3" href="#" style="background-color: #269E86; color: white;">1</a></li>
+                    <li class="page-item"><a class="page-link me-3" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link me-3" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link me-3" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link me-3" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#" style="border: none;">></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row mb-5" style=" background-image: linear-gradient(to right, #63250E,#630E11 ,#CCA04F); border-radius: 15px;">
+        <div class="col-md-3 text-white text-center my-5 ms-5">
+            <div class="mb-3">TUYỂN TẬP</div>
+            <h2 class="mb-3">TÂM LÝ</h2>
+            <div>HAY NHẤT</div>
+        </div>
+        <div class="col-md-8 my-2 ms-5">
+            <img src="\img\\Poster.png" alt="" style="object-fit: fill;">
+        </div>
+    </div>

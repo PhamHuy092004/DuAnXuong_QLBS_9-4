@@ -1,0 +1,21 @@
+﻿body {
+}
+.checked {
+    color: orange;
+}
+
+.tieude a {
+    text-decoration: none;
+    color: gray;
+}
+
+.page-link {
+    border: 1px solid #269E86;
+    color: #269E86;
+    border-radius: 10px;
+}
+
+    .page-link:hover {
+        background-color: #269E86;
+        color: white;
+    }
