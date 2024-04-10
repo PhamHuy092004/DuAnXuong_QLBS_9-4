@@ -20,83 +20,69 @@
         
     }
 </style>
-<div class="tieude ms-4 my-4">
-        <a href="">Trang chủ ></a>
-        <a href="">Sách đọc ></a>
-        <a href="" style="color:mediumaquamarine;">Tâm lý phát triển cá nhân</a>
-    </div>
-    <div class="alert alert-light ms-4" role="alert">
-        <h5>Tâm lý - phát triển cá nhân</h5>
-    </div>
-    <div class="row mt-5" style="justify-content: center;">
-    @foreach(var item in Model)
-    {
-        <div class="col-sm-3 ms-3 border border-2"
-             style="width: 23%;height: 300px; border-radius: 15px; position: relative;">
-            <div class="row g-0">
-                <div class="col-sm-6">
-                    <img src="@Url.Content(item.HINHANH)" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-sm-6 mt-4 h-100">
-                    <div class="text-uppercase fw-bold ms-2">@item.TIEUDE</div>
-                    <div class="text-secondary ms-2">@item.TacGia.TENTACGIA</div><br>
-                    <span class="fa fa-star checked ms-2"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <div class="mt-2 ms-2 text-context" style="font-size: 14px;">@item.MOTA</div>
-                    <div style="color: tomato; font-size: 22px;" class="ms-2">@item.GIA.ToString("#,##0") VND</div>
-                </div>
-            </div>
-            <div class="">
-                <div class="row mt-2">
-                    <div class="col-sm-5 ms-3">
-                        <button class="btn" type="button"
-                                style="width: 140px; color: white; border-radius: 10px; background-color: #269E86;">
-                            MUA
-                            NGAY
-                        </button>
-                    </div>
-                    <div class="col-sm-5 ms-4">
-                        <button class="btn" type="button"
-                                style="width: 100px;color: white;margin-left: 5px;border-radius: 10px; background-color: #426D9C;">
-                            CHI
-                            TIẾT
-                        </button>
+<<div class="tieude ms-4 my-4">
+    <a href="">Trang chủ ></a>
+    <a href="">Sách đọc ></a>
+    <a href="" style="color:mediumaquamarine;">Tâm lý phát triển cá nhân</a>
+</div>
+<div class="alert alert-light ms-4" role="alert">
+    <h5>Tâm lý - phát triển cá nhân</h5>
+</div>
+<div class="container">
+    <div class="row">
+        @foreach (var abc in Model)
+        {
+            <div class="card col-md-3 my-3 border border-0">
+                <div class="w-80 border border-1" id="@abc.IDSACH">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5">
+                            <img src="@Url.Content(@abc.HINHANH)" / class="img-thumbnail border border-0">
+                        </div>
+                        <div class="col-md-12 col-lg-7">
+                            <p>@abc.TIEUDE</p>
+                            <div class="text-secondary ms-2">Trần Nhật Tân</div><br>
+                            <span class="fa fa-star checked ms-2"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <div class="mt-2 ms-2" style="font-size: 14px;">Tâm lý học là ngành khoa học nghiên cứu</div>
+                            <div style="color: tomato; font-size: 22px;" class="ms-2">@abc.GIA.ToString("N0") VND</div>
+                        </div>
+                        <div class="my-3 text-center">
+                            <a class="btn" style="background-color:#269E86;color:white">MUA NGAY</a>
+                            <a class="btn" style="background-color:#426D9C;color:white" href="/ChiTietSach/ChiTietSach/@abc.IDSACH">CHI TIẾT</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-    }
-   
-
+        }
     </div>
+</div>
 
-    <div class="row mt-4">
-        <div style="display: flex; justify-content: center; align-items: center;">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination ms-4">
-                    <li class="page-item"><a class="page-link me-3" href="#" style="border: none;">< </a></li>
-                    <li class="page-item"><a class="page-link me-3" href="#" style="background-color: #269E86; color: white;">1</a></li>
-                    <li class="page-item"><a class="page-link me-3" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link me-3" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link me-3" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link me-3" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#" style="border: none;">></a></li>
-                </ul>
-            </nav>
-        </div>
+<div class="row mt-4">
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination ms-4">
+                <li class="page-item"><a class="page-link me-3" href="#" style="border: none;">< </a></li>
+                <li class="page-item"><a class="page-link me-3" href="#" style="background-color: #269E86; color: white;">1</a></li>
+                <li class="page-item"><a class="page-link me-3" href="#">2</a></li>
+                <li class="page-item"><a class="page-link me-3" href="#">3</a></li>
+                <li class="page-item"><a class="page-link me-3" href="#">4</a></li>
+                <li class="page-item"><a class="page-link me-3" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#" style="border: none;">></a></li>
+            </ul>
+        </nav>
     </div>
+</div>
 
-    <div class="row mb-5" style=" background-image: linear-gradient(to right, #63250E,#630E11 ,#CCA04F); border-radius: 15px;">
-        <div class="col-md-3 text-white text-center my-5 ms-5">
-            <div class="mb-3">TUYỂN TẬP</div>
-            <h2 class="mb-3">TÂM LÝ</h2>
-            <div>HAY NHẤT</div>
-        </div>
-        <div class="col-md-8 my-2 ms-5">
-            <img src="\img\\Poster.png" alt="" style="object-fit: fill;">
-        </div>
+<div class="row mb-5" style=" background-image: linear-gradient(to right, #63250E,#630E11 ,#CCA04F); border-radius: 15px;">
+    <div class="col-md-3 text-white text-center my-5 ms-5">
+        <div class="mb-3">TUYỂN TẬP</div>
+        <h2 class="mb-3">TÂM LÝ</h2>
+        <div>HAY NHẤT</div>
     </div>
+    <div class="col-md-8 my-2 ms-5">
+        <img src="\img\\Poster.png" alt="" style="object-fit: fill;">
+    </div>
+</div>

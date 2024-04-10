@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DA_Xuong.Models.TACGIA>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="card w-90">
+        <div class="card-header"><h4>Danh sách tác giả</h4></div>
+        <div class="card-body">
+            @foreach (var item in Model)
+            {
+                <div class="mb-4 w-100">
+                    <div class="row">
+                        <div class="col-md-2 border border-1 fw-bold">
+                            @Html.DisplayNameFor(model => model.TENTACGIA)
+                        </div>
+                        <div class="col-md-8 border border-1">
+                            @Html.DisplayFor(modelItem => item.TENTACGIA)
+                        </div>
+                        <div class="col-md-2 border border-1 fw-bold">
+                            Action
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 border border-1 fw-bold">
+                            @Html.DisplayNameFor(model => model.TIEUSU)
+                        </div>
+                        <div class="col-md-8 border border-1">
+                            @Html.DisplayFor(modelItem => item.TIEUSU)
+                        </div>
+                        <div class="col-md-2 border border-1">
+                            <a asp-action="Edit" asp-route-id="@item.IDTACGIA">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.IDTACGIA">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.IDTACGIA">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
