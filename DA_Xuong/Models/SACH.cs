@@ -13,7 +13,7 @@ namespace DA_Xuong.Models
         public DateTime NGAYXUATBAN { get; set; }
         public string MOTA { get; set; }
         public int SOLUONG { get; set; }
-        public int TRANGTHAI { get; set; }
+        public string TRANGTHAI { get; set; }
         public string HINHANH { get; set; }
 
         [ForeignKey("IDTACGIA")] 
