@@ -1,0 +1,33 @@
+﻿body {
+}
+.quantity {
+    position: relative;
+    display: flex;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.minus-btn, .plus-btn {
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+input[name="quantity"] {
+    width: 40px;
+    text-align: center;
+}

@@ -9,7 +9,12 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.MapControllerRoute(
+    name: "customer_layout",
+    pattern: "Customer/{controller=Customer}/{action=Index}/{id?}",
+    defaults: new { area = "Customer", controller = "Customer", action = "Index" }
+);
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

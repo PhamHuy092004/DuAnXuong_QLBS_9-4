@@ -36,19 +36,20 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>    <img src="@Url.Content(item.HINHANH)" alt="Ảnh sản phẩm" style="width: 100px; height: 100px;"></td>
-                                <td>@item.TIEUDE</td>
-                                <td>@item.SOLUONG</td>
-                                <td>@item.GIA.ToString("#,##0") VND</td>
+                                <td><img src="@Url.Content(item.HINHANH)" alt="Ảnh sản phẩm" style="width: 100px; height: 100px;"></td>
+                                <td class="fw-bolder">@item.TIEUDE</td>
+                                <td class="text-success">@item.SOLUONG</td>
+                                <td class="text-danger">@item.GIA.ToString("#,##0") VND</td>
                             </tr>
                         }
                         <tr>
-                            <td colspan="2"><strong>Tổng giá:</strong></td>
-                            <td><strong>@Model.Sum(item => item.GIA).ToString("#,##0") VND</strong></td>
+                            <td colspan="3"><strong>Tổng giá:</strong></td>
+                            <td><strong>@Model.Sum(item => item.SOLUONG * item.GIA).ToString("#,##0") VND</strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
         </div>
         <button type="submit" class="btn btn-primary">Xác nhận đơn hàng</button>
     </form>

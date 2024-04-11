@@ -31,24 +31,26 @@ namespace DA_Xuong.Controllers
         public IActionResult AddToCart(int id)
         {
             var existingItem = _db.GIOHANG.FirstOrDefault(item => item.IDSACH == id);
-            if (existingItem != null)
+            if (existingItem == null)
             {
-                existingItem.SOLUONG += 1;
-                _db.SaveChanges();
-            }
-            else
-            {
+                // Item doesn't exist, so add it to the cart
                 GIOHANG newItem = new GIOHANG
                 {
                     IDSACH = id,
                     SOLUONG = 1,
-                    IDNGUOIDUNG = 1
+                    IDNGUOIDUNG = 1 // You may need to change this depending on your user authentication logic
                 };
                 _db.GIOHANG.Add(newItem);
                 _db.SaveChanges();
+                TempData["SuccessMessage"] = "Sản phẩm đã được thêm vào giỏ hàng thành công.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Sản phẩm đã có trong giỏ hàng.";
             }
 
             return RedirectToAction("ChiTietSach", new { id = id });
+
         }
 
     }

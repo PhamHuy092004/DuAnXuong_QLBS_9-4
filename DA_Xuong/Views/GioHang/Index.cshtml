@@ -2,63 +2,105 @@
 @{
     double total = Model.Sum(item => item.TONG);
 }
-<div class="row">
-    <div class="col-md-7">
+<div class="container" style="margin-bottom:300px">
+    <div class="row">
         <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr class="text-center" style="background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147)); color:white">
-                        <th scope="col">Ảnh</th>
-                        <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Giá</th>
+                        <th scope="col">Chọn tất cả sản phẩm</th>
+                        <th scope="col">Hình thức</th>
+                        <th scope="col">Đơn giá</th>
                         <th scope="col">Số lượng</th>
-                        <th scope="col">Tổng</th>
+                        <th scope="col">Thành tiền</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var item in Model)
+                    @foreach (var item in Model)
                     {
-                         <tr class="text-center">
+                        <tr class="text-center">
                             <td>
-                                <img src="@Url.Content(item.HINHANH)" alt="Ảnh sản phẩm" style="width: 100px; height: 100px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="@Url.Content(item.HINHANH)" alt="Ảnh sản phẩm" style="width: 100px; height: 100px;">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>@item.TIEUDE</strong>
+                                        <p>@item.TENTACGIA</p>
+                                    </div>
+                                </div>
+
                             </td>
-                            <td><strong>@item.TIEUDE</strong></td>
+                            <td>
+                                <input type="radio" id="option1" name="options" value="option1">
+                                <label for="option1">Ebook</label>
+
+                                <input type="radio" id="option2" name="options" value="option2">
+                                <label for="option2">Sách giấy</label>
+                            </td>
                             <td>@item.GIA.ToString("#,##0") đồng</td>
-                            <td class="text-center">@item.SOLUONG</td>
+                            <td class="text-center">
+                                <form method="post" action="/GioHang/UpdateQuantity">
+                                    <div class="quantity">
+                                        <button class="minus-btn" type="button" name="button">-</button>
+                                        <input type="text" name="quantity" value="@item.SOLUONG" class="quantity-input">
+                                        <button class="plus-btn" value="Update" type="submit" name="button">+</button>
+                                        <input type="hidden" name="productId" value="@item.IDSACH">
+                                        <input type="submit" value="Update" class="update-btn">
+                                    </div>
+                                </form>
+                            </td>
+
+
                             <td class="text-danger">@item.TONG.ToString("#,##0") đồng</td>
-                            <td><button class="btn btn-outline-danger">Xóa</button></td>
-                         </tr>
-                    }              
-                    
+                            <td>
+                                <form method="post" action="@Url.Action("XoaSanPham", "GioHang")">
+                                    <input type="hidden" name="maSanPham" value="@item.IDSACH" />
+                                    <button type="submit" class="delete-button btn btn-outline-danger">Xóa</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+
                 </tbody>
             </table>
+
         </div>
+
     </div>
-    <div class="col-md-5">
-        <div>
-          
-                <h4  class="text-center" style="background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147)); color:white">THANH TOÁN</h4>
-    
-          
-            <hr />
-            <p><span class="fw-bolder">Tổng cộng:</span> <span class="text-danger">@total.ToString("#,##0") đồng</span></p>
-            <div class="form-group">
-                <label for="deliveryType" class="fw-bolder">Loại giao hàng:</label>
-                <select class="form-control" id="deliveryType">
-                    <option value="standard">Tiêu chuẩn</option>
-                    <option value="express">Nhanh</option>
-                    <option value="premium">Premium</option>
-                </select>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+             
+                <div class="card-body">
+                    <h5 class="card-title">Mã giảm giá 10K - Đơn hàng từ 150K</h5>
+                    <p class="card-text">Không áp dụng cho phiếu quà tặng</p>
+                    <a href="#" class="btn btn-outline-success">Nhận</a>
+                </div>
             </div>
-            <hr />
-            <a href="/ThanhToan/ThanhToan" class="btn btn-outline-danger btn-block mt-3">Tiến hành thanh toán</a>
         </div>
-        <hr />
-        <div class="form-group">
-            <label for="promoCode" class="fw-bolder">Mã ưu đãi</label>
-            <input type="text" class="form-control" id="promoCode" placeholder="Nhập mã ưu đãi">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Mã giảm giá cho khách lần đầu - 20% giá trị đơn hàng </h5>
+                    <p class="card-text">Không áp dụng cho phiếu quà tặng</p>
+                    <a href="#" class="btn btn-outline-success">Learn More</a>
+                </div>
+            </div>
         </div>
-        <button class="btn btn-secondary btn-block mt-2">Áp dụng</button>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Thành tiền:  @total.ToString("#,##0") đồng</h5>
+                    <p class="card-text">Không áp dụng cho phiếu quà tặng</p>
+                    <a href="#" class="btn btn-outline-success">Learn More</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+

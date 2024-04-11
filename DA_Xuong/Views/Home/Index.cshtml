@@ -8,6 +8,22 @@
         }
     </style>
     <style>
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        overflow-x: auto;
+        padding: 0 20px;
+    }
+
+        .image-container img {
+            max-width: 100px;
+            max-height: 100px; 
+            margin: 0 10px; 
+            flex-shrink: 0; 
+        }
+
     .project-item {
         position: relative;
         overflow: hidden;
@@ -80,7 +96,23 @@
     <div class="container">
 
     <img src="~/IMG/Frame 21.png" style="width:100%" />
-    <img src="/IMG//Rectangle 192.png" style="width:100%; margin-top:30px;margin-bottom:30px;" />
+    <div class="container">
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="image-container d-flex justify-content-center">
+                    <img src="/Logo/1980logo.png" alt="Mô tả hình ảnh 1" class="img-fluid">
+                    <img src="/Logo/dinhtilogo.png" alt="Mô tả hình ảnh 2" class="img-fluid">
+                    <img src="/Logo/logokimdong.png" alt="Mô tả hình ảnh 1" class="img-fluid">
+                    <img src="/Logo/nhasachvietlogo.jpg" alt="Mô tả hình ảnh 2" class="img-fluid">
+                    <img src="/Logo/saigonbooklogo.png" alt="Mô tả hình ảnh 2" class="img-fluid">
+                    <img src="/Logo/tanvietlogo.jpg" alt="Mô tả hình ảnh 2" class="img-fluid">
+                    <img src="/Logo/trivietlogo.png" alt="Mô tả hình ảnh 2" class="img-fluid">
+                      <img src="/Logo/zenbook.png" alt="Mô tả hình ảnh 2" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="row">
             <div class="row">
                 <div class="col-md-6"><p class="text-uppercase fw-bolder">Sách tâm lý</p></div>
@@ -98,7 +130,7 @@
                             <p class="text-uppercase fw-bolder">@project.TIEUDE</p>
                             <p>@project.IDTACGIA</p>
                             <p>@project.MOTA</p>
-                            <p>Giá: <n class="text-danger fw-bolder">@project.GIA</n> đồng</p>
+                            <p>Giá: <n class="text-danger fw-bolder">@project.GIA.ToString("#,##0")</n> đồng</p>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>

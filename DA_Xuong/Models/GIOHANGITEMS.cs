@@ -8,6 +8,8 @@ namespace DA_Xuong.Models
         [Key]
         public int IDGIOHANG { get; set; }
         public int IDSACH { get; set; }
+        public int IDTACGIA { get; set; }
+        public string TENTACGIA { get; set; }
         public int IDNGUOIDUNG { get; set; }
         public int SOLUONG { get; set; }
         public string TIEUDE { get; set; }
