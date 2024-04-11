@@ -1,0 +1,66 @@
+﻿@model DA_Xuong.Models.SACH
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3>Thông tin sách</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TIEUDE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TIEUDE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HINHANH)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Html.DisplayFor(model => model.HINHANH)" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IDTACGIA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IDTACGIA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GIA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GIA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NGAYXUATBAN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NGAYXUATBAN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MOTA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SOLUONG)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SOLUONG)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a class="btn btn-info text-white" asp-action="Edit" asp-route-id="@Model?.IDSACH">Edit</a>
+    <a class="btn btn-success text-white" asp-action="Index">Back to List</a>
+</div>
+
