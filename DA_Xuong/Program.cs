@@ -6,14 +6,15 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSession(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 var app = builder.Build();
 
-app.MapControllerRoute(
-    name: "customer_layout",
-    pattern: "Customer/{controller=Customer}/{action=Index}/{id?}",
-    defaults: new { area = "Customer", controller = "Customer", action = "Index" }
-);
+app.UseSession();
+
 
 if (!app.Environment.IsDevelopment())
 {

@@ -14,7 +14,7 @@ namespace DA_Xuong.Models
         public string? MOTA { get; set; }
         public int SOLUONG { get; set; }
         public int TRANGTHAI { get; set; }
-        public string? HINHANH { get; set; }
+        public string HINHANH { get; set; }
 
         [ForeignKey("IDTACGIA")] 
         public TACGIA? TacGia { get; set; } 

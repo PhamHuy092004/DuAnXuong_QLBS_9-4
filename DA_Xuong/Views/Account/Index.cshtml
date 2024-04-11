@@ -77,30 +77,30 @@
                     <h2>ĐĂNG NHẬP</h2>
                 </div>
                 <div class="card-body">
-                    <form  asp-controller="Account" asp-action="Login">
-                        <div asp-validation-summary="All">
-                                                        <div class="form-group">
-                                <label for="email" style="font-weight: bold;">Email</label>
-                                <input type="email" class="form-control" id="emaildn" name="emaildn" placeholder="Nhập địa chỉ email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="matKhau" style="font-weight: bold;">Mật khẩu</label>
-                                <input type="password" class="form-control" id="matKhaudn" name="matKhaudn" placeholder="Nhập mật khẩu" required>
-                            </div>
-                            @if (!string.IsNullOrEmpty(errorMessage))
-                                {
-                                    @errorMessage
-                                }   
+               <form asp-controller="Account" asp-action="Login">
+     <div asp-validation-summary="All">
+                                     <div class="form-group">
+             <label for="email" style="font-weight: bold;">Email</label>
+             <input type="email" class="form-control" id="emaildn" name="emaildn" placeholder="Nhập địa chỉ email" required>
+         </div>
+         <div class="form-group">
+             <label for="matKhau" style="font-weight: bold;">Mật khẩu</label>
+             <input type="password" class="form-control" id="matKhaudn" name="matKhaudn" placeholder="Nhập mật khẩu" required>
+         </div>
+         @if (!string.IsNullOrEmpty(errorMessage))
+             {
+                 @errorMessage
+             }   
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Lưu tài khoản
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-outline-success btn-block w-100" style="margin-top:10px">Đăng nhập</button>
-                        </div>
-                    </form>
+         <div class="form-check">
+             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+             <label class="form-check-label" for="flexCheckDefault">
+                 Lưu tài khoản
+             </label>
+         </div>
+         <button type="submit" class="btn btn-outline-success btn-block w-100" style="margin-top:10px">Đăng nhập</button>
+     </div>
+ </form>
                     <hr />
                     <p class="fs-5 fw-bolder text-center" style="margin-top:20px">Có thể đăng nhập bằng</p>
                     <div class="social-icons justify-content-center align-items-center">

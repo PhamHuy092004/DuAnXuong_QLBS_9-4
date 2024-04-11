@@ -22,13 +22,20 @@ namespace DA_Xuong.Controllers
         public IActionResult Login(string emaildn, string matKhaudn)
         {
             var user = _dbContext.TAIKHOAN.FirstOrDefault(u => u.TENTAIKHOAN == emaildn && u.MATKHAU == matKhaudn);
-
             if (user != null)
             {
-                // Xác thực thành công
-                HttpContext.Session.SetString("TENTAIKHOAN", user.TENTAIKHOAN);
-                HttpContext.Session.SetInt32("IDNGUOIDUNG", user.IDNGUOIDUNG);
-                return RedirectToAction("Index", "Home");
+                if (user.VAITRO == 1)
+                {
+                    // Xác thực thành công
+                    HttpContext.Session.SetString("TENTAIKHOAN", user.TENTAIKHOAN);
+                    HttpContext.Session.SetInt32("IDNGUOIDUNG", user.IDNGUOIDUNG);
+                    return RedirectToAction("Index", "Customer", new { area = "Customer" });
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Email hoặc mật khẩu không đúng.");
+                    return View("Index", "Account");
+                }
             }
             else
             {
