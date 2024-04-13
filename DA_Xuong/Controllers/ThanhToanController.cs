@@ -14,8 +14,10 @@ namespace DA_Xuong.Controllers
         }
         public IActionResult ThanhToan()
         {
+            int userId = HttpContext.Session.GetInt32("IDNGUOIDUNG") ?? 0;
             var giohangitems = (from giohang in _db.GIOHANG
                                 join sach in _db.SACH on giohang.IDSACH equals sach.IDSACH
+                                where giohang.IDNGUOIDUNG == userId
                                 select new GIOHANGITEMS
                                 {
                                     IDGIOHANG = giohang.IDGIOHANG,

@@ -36,9 +36,13 @@ namespace DA_Xuong.Controllers
 
         public IActionResult Index()
         {
+            // Lấy ID của người dùng từ session, hoặc mặc định là 0 nếu không tìm thấy
+            int userId = HttpContext.Session.GetInt32("IDNGUOIDUNG") ?? 0;
+
             var giohangitems = (from giohang in _db.GIOHANG
                                 join sach in _db.SACH on giohang.IDSACH equals sach.IDSACH
                                 join tacgia in _db.TACGIA on sach.IDTACGIA equals tacgia.IDTACGIA
+                                where giohang.IDNGUOIDUNG == userId
                                 select new GIOHANGITEMS
                                 {
                                     TENTACGIA = tacgia.TENTACGIA,
@@ -53,9 +57,13 @@ namespace DA_Xuong.Controllers
 
             return View(giohangitems);
         }
+
         [HttpPost]
         public IActionResult XoaSanPham(int maSanPham)
         {
+            var cart = HttpContext.Session.Get<List<int>>("Cart") ?? new List<int>();
+            cart.Remove(maSanPham);       
+            HttpContext.Session.Set("Cart", cart);
             var sanPham = _db.GIOHANG.FirstOrDefault(item => item.IDSACH == maSanPham);
             if (sanPham != null)
             {

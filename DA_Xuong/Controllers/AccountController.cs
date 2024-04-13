@@ -1,5 +1,6 @@
 ﻿using DA_Xuong.Database;
 using DA_Xuong.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,10 +13,26 @@ namespace DA_Xuong.Controllers
         {
             _dbContext = dbContext;
         }
+
+        [HttpPost]
+        public IActionResult LogOut()
+        {
+
+            HttpContext.Session.Remove("IDNGUOIDUNG");
+            return RedirectToAction("Index", "Home");
+        }
         public IActionResult Index()
         {
-            var db = _dbContext.TAIKHOAN.ToList();
-            return View(db);
+            var ss = HttpContext.Session.GetInt32("IDNGUOIDUNG");
+            if (ss != null)
+            {
+                return RedirectToAction("AccountInfo", "Account");
+            }
+            else
+            {
+                var db = _dbContext.TAIKHOAN.ToList();
+                return View(db);
+            }
         }
         public IActionResult ViewTaiKhoan()
         {
@@ -23,7 +40,8 @@ namespace DA_Xuong.Controllers
         }
         public IActionResult AccountInfo(int userId)
         {
-            var user = _dbContext.TAIKHOAN.FirstOrDefault(u => u.IDNGUOIDUNG == 1);
+
+            var user = _dbContext.TAIKHOAN.FirstOrDefault(u => u.IDNGUOIDUNG == HttpContext.Session.GetInt32("IDNGUOIDUNG"));
             if (user == null)
             {
                 return NotFound();
@@ -35,14 +53,16 @@ namespace DA_Xuong.Controllers
         public IActionResult Login(string emaildn, string matKhaudn)
         {
             var user = _dbContext.TAIKHOAN.FirstOrDefault(u => u.TENTAIKHOAN == emaildn && u.MATKHAU == matKhaudn);
+
             if (user != null)
             {
-                if (user.VAITRO == 1)
+                if (user.VAITRO != 2)
                 {
                     // Xác thực thành công
                     HttpContext.Session.SetString("TENTAIKHOAN", user.TENTAIKHOAN);
                     HttpContext.Session.SetInt32("IDNGUOIDUNG", user.IDNGUOIDUNG);
-                    return RedirectToAction("Index", "Customer", new { area = "Customer" });
+                    return RedirectToAction("Index", "Home");
+
                 }
                 else
                 {
@@ -52,13 +72,13 @@ namespace DA_Xuong.Controllers
             }
             else
             {
-                // Xác thực không thành công, thiết lập thông báo lỗi và trả về view Login
                 ModelState.AddModelError(string.Empty, "Email hoặc mật khẩu không đúng.");
                 return View("Index", "Account");
             }
         }
 
-        [HttpPost]
+
+                [HttpPost]
         public IActionResult CreateAccount(string email, string matKhau, string xacNhanMatKhau)
         {
             if (ModelState.IsValid)

@@ -43,7 +43,7 @@
     }
 
 </style>
-<div class="background" style="background-color: #E5F3F0">
+<div class="background">
     <div class="row">
         <div class="col-4">
             <div class="sidebar fw-bolder fs-5">
@@ -51,7 +51,10 @@
                     <li><a href="/Account/AccountInfo">Thông tin cá nhân</a></li>
                     <li><a href="#orders">Đơn hàng</a></li>
                     <li><a href="#settings">Cài đặt</a></li>
-                    <li><a href="#logout">Đăng xuất</a></li>
+                    <form asp-action="LogOut" asp-controller="Account">
+                    <button class="btn" type="submit">Log out</button>
+                    </form>
+                 
                 </ul>
             </div>
         </div>
