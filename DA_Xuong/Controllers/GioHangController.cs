@@ -23,7 +23,7 @@ namespace DA_Xuong.Controllers
                 return NotFound();
             }
 
-            // Update the quantity of the product in the cart
+            
             var cartItem = _db.GIOHANG.FirstOrDefault(item => item.IDSACH == productId);
             if (cartItem != null)
             {

@@ -1,0 +1,89 @@
+﻿@model DA_Xuong.Models.TAIKHOAN
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .sidebar li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 10px 20px;
+        color: #333;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .sidebar a:hover {
+            background-color: White;
+            border-radius:20px;
+            color: forestgreen;
+
+        }
+
+        .sidebar a.active {
+            background-color: #ddd;
+        }
+
+
+    .main-content {
+        flex-grow: 1;
+        margin-left: 20px;
+    }
+
+</style>
+<div class="background" style="background-color: #E5F3F0">
+    <div class="row">
+        <div class="col-4">
+            <div class="sidebar fw-bolder fs-5">
+                <ul>
+                    <li><a href="/Account/AccountInfo">Thông tin cá nhân</a></li>
+                    <li><a href="#orders">Đơn hàng</a></li>
+                    <li><a href="#settings">Cài đặt</a></li>
+                    <li><a href="#logout">Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="main-content">
+                <h1>Thông Tin Tài Khoản</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="@Url.Content(Model.HINHANH)" style="width:100%" />
+                            <br />
+                            <button class="btn btn-outline-success">Cập nhật hình ảnh</button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <p><strong>Tên Tài Khoản:</strong> @Model.TENTAIKHOAN</p>
+                        <p><strong>Họ và Tên:</strong> @Model.HOVATEN</p>
+                        <p><strong>Số Điện Thoại:</strong> @Model.SODIENTHOAI</p>
+                        <p><strong>Địa Chỉ:</strong> @Model.DIACHI</p>
+                        <p><strong>Giới tính</strong>: @Model.GIOITINH</p>
+                        <p><strong>Mật khẩu</strong>: *********</p>
+                        <button class="btn btn-outline-success">Cập nhật thông tin</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        </div>
+     
+      
+
+</div>
+

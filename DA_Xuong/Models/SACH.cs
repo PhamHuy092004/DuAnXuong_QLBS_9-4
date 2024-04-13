@@ -17,6 +17,6 @@ namespace DA_Xuong.Models
         public string HINHANH { get; set; }
 
         [ForeignKey("IDTACGIA")] 
-        public TACGIA? TacGia { get; set; } 
+        public TACGIA TacGia { get; set; } 
     }
 }

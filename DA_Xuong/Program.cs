@@ -15,7 +15,10 @@ var app = builder.Build();
 
 app.UseSession();
 
-
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -25,9 +28,13 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{area=Admin}/{controller=SACHes}/{action=Index}/{id?}");
-
+      name: "account",
+      pattern: "Account/{action=AccountInfo}/{userId?}",
+      defaults: new { controller = "Account" });
+app.MapControllerRoute(
+    name: "admin_layout",
+    pattern: "Admin/{controller=SACHes}/{action=Index}/{id?}",
+    defaults: new { area = "Admin", controller = "SACHes", action = "Index" }
+    );
 app.Run();

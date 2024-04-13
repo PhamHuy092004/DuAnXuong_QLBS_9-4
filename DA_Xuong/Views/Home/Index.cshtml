@@ -7,50 +7,56 @@
             color: orange;
         }
     </style>
-    <style>
-    .image-container {
+<style>
+    .img-container {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        overflow-x: auto;
-        padding: 0 20px;
+        justify-content: space-around; /* Căn ảnh giữa */
+        align-items: center; /* Căn ảnh theo chiều dọc */
+        overflow-x: auto; /* Thêm thanh cuộn ngang khi cần thiết */
+        white-space: nowrap; /* Ngăn các ảnh xuống dòng mới */
     }
 
-        .image-container img {
-            max-width: 100px;
-            max-height: 100px; 
-            margin: 0 10px; 
-            flex-shrink: 0; 
+        .img-container img {
+            width: 150px; /* Điều chỉnh kích thước của ảnh tùy ý */
+            height: auto; /* Giữ tỷ lệ khung hình */
+            margin: 0 10px; /* Khoảng cách giữa các ảnh */
         }
 
     .project-item {
         position: relative;
         overflow: hidden;
         border-radius: 5px;
+        width: 100%; 
+        margin-bottom: 20px; 
     }
 
         .project-item img {
             width: 100%;
-            height: auto;
+            height: 400px; /* Đặt chiều cao cố định cho các ảnh sách */
+            object-fit: cover; /* Các ảnh sẽ được căn chỉnh sao cho vừa với kích thước của khung */
             transition: transform 0.3s;
             image-rendering: pixelated; /* Ngăn không cho ảnh bị mờ */
         }
+
 
     .project-info {
         background-color: rgba(255, 255, 255, 0.9);
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 100%; /* Thay đổi giá trị này thành phần trăm (%) */
+        width: 100%; 
         padding: 10px;
         box-sizing: border-box;
         transition: transform 0.3s;
         transform: translateY(100%);
+        opacity: 0; 
+        pointer-events: none; 
     }
 
     .project-item:hover .project-info {
         transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto; 
     }
 
     .project-item:hover img {
@@ -65,11 +71,6 @@
         .project-item:hover {
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
         }
-
-            .project-item:hover .project-info {
-                transform: translateY(0);
-                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-            }
 
     .pagination-buttons {
         margin-top: 20px;
@@ -90,17 +91,16 @@
         border-radius: 5px;
     }
 
-    </style>
+
+</style>
 
     @model List<DA_Xuong.Models.SACH>
-    <div class="container">
 
     <img src="~/IMG/Frame 21.png" style="width:100%" />
-    <div class="container">
 
         <div class="row mt-5">
             <div class="col-md-12">
-                <div class="image-container d-flex justify-content-center">
+                <div class="img-container">
                     <img src="/Logo/1980logo.png" alt="Mô tả hình ảnh 1" class="img-fluid">
                     <img src="/Logo/dinhtilogo.png" alt="Mô tả hình ảnh 2" class="img-fluid">
                     <img src="/Logo/logokimdong.png" alt="Mô tả hình ảnh 1" class="img-fluid">
@@ -112,7 +112,7 @@
                 </div>
             </div>
         </div>
-    </div>
+<div class="container">
         <div class="row">
             <div class="row">
                 <div class="col-md-6"><p class="text-uppercase fw-bolder">Sách tâm lý</p></div>
@@ -124,66 +124,50 @@
             {
           
                 <div class="col-md-3" style="margin-top:10px">
-                    <div class="project-item">
-                        <img src="@Url.Content(project.HINHANH)" />
-                        <div class="project-info">
-                            <p class="text-uppercase fw-bolder">@project.TIEUDE</p>
-                            <p>@project.IDTACGIA</p>
-                            <p>@project.MOTA</p>
-                            <p>Giá: <n class="text-danger fw-bolder">@project.GIA.ToString("#,##0")</n> đồng</p>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <n>(10,5k lượt mua)</n>
-                            <div style="justify-content: center;">
-                                <button type="submit" class="btn btn-outline-success">Thêm sản phẩm</button>
+                <div class="project-item">
+                    <img src="@Url.Content(project.HINHANH)" />
+                    <div class="project-info">
+                        <p class="text-uppercase fw-bolder">@project.TIEUDE</p>
+                        @if (project != null)
+                        {
+                            <p>@(project.TacGia != null ? project.TacGia.TENTACGIA : "")</p>
+                            <p>
+                                @{
+                                    // Kiểm tra độ dài của mô tả
+                                    if (!string.IsNullOrEmpty(project.MOTA))
+                                    {
+                                        string shortDescription = project.MOTA.Length > 75 ? project.MOTA.Substring(0, 75) + "..." : project.MOTA;
+                                        @shortDescription
+                                    }
+                                }
+                            </p>
+                        }
+                        <p>Giá: <span class="text-danger fw-bolder">@project.GIA.ToString("#,##0")</span> đồng</p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <n>(10,5k lượt mua)</n>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-outline-success me-2">Thêm sản phẩm</button>
                             <form action="@Url.Action("ChiTietSach", "ChiTietSach")" method="get">
                                 <input type="hidden" name="id" value="@project.IDSACH" />
-                                <button class="btn btn-danger" type="submit">Chi tiết sản phẩm</button>
+                                <button class="btn btn-outline-danger" type="submit">Chi tiết sản phẩm</button>
                             </form>
-                            </div>
                         </div>
 
                     </div>
+                </div>
+
+
+                  
                 </div>
         
                 
             }
         </div>
-        <div class="row">
-            <div class="row">
-                <div class="col-md-6"><p class="text-uppercase fw-bolder">Sách kinh tế - Marketing</p></div>
-                <div class="col-md-6"><p class="text-uppercase fw-bolder float-end">Tất cả >></p></div>
-            </div>
-            <hr style="border-top: 2px solid #000; width: 100%;" />
-            @foreach (var project in Model)
-            {
-                <div class="col-md-3" style="margin-top:10px">
-                    <div class="project-item">
-                    <img src="@Url.Content(project.HINHANH)" />
-                        <div class="project-info">
-                            <p class="text-uppercase fw-bolder">@project.TIEUDE</p>
-                            <p>@project.IDTACGIA</p>
-                            <p>@project.MOTA</p>
-                            <p>Giá: <n class="text-danger fw-bolder">@project.GIA</n> đồng</p>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <n>(10,5k lượt mua)</n>
-                            <div style="justify-content: center;">
-                                <button class="btn btn-success">Mua ngay</button>
-                                <button class="btn btn-primary">Chi tiết</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            }
-        </div>
+     
         <div id="carouselExampleIndicators" class="carousel slide" style="width:100%;margin-top:30px;margin-bottom:30px; height:auto;">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -210,44 +194,7 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <div class="row">
-            <div class="col-md-6 d-flex">
-                <n class="text-uppercase fw-bolder">Văn học Việt Nam</n>
-            </div>
-            <div class="col-md-6 d-flex justify-content-end">
-                <n class="text-uppercase fw-bolder">Tất cả >></n>
-            </div>
-            <hr style="border-top: 2px solid #000; width: 100%;" />
-        </div>
-        <div class="row">
-       
-       
-            @foreach (var project in Model)
-            {
-                <div class="col-md-3" style="margin-top:10px">
-                    <div class="project-item">
-                        <img src="" />
-                        <div class="project-info">
-                            <p class="text-uppercase fw-bolder">@project.TIEUDE</p>
-                            <p>@project.IDTACGIA</p>
-                            <p>@project.MOTA</p>
-                            <p>Giá: <n class="text-danger fw-bolder">@project.GIA</n> đồng</p>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <n>(10,5k lượt mua)</n>
-                            <div style="justify-content: center;">
-                                <button class="btn btn-success">Mua ngay</button>
-                                <button class="btn btn-primary">Chi tiết</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            }
-        </div>
+        
       
         <div class="row ">
             <div class="pagination-buttons d-flex align-items-center justify-content-center">

@@ -15,6 +15,7 @@ namespace DA_Xuong.Database
         public DbSet<CHITIETTHELOAI> CHITIETTHELOAI { get; set; }
         public DbSet<CHITIETHINHANH> CHITIETHINHANH { get; set; }
         public DbSet<GIOHANG> GIOHANG { get; set; }
+        public DbSet<GIOHANG> GIOHANGITEMS { get; set; }
         public DbSet<TAIKHOAN> TAIKHOAN { get; set; } 
     }
 }

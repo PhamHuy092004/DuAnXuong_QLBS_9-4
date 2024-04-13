@@ -20,7 +20,7 @@ namespace DA_Xuong.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Admin/TACGIAs
+        [Route("Admin/TACGIAs")]
         public async Task<IActionResult> Index()
         {
               return _context.TACGIA != null ? 

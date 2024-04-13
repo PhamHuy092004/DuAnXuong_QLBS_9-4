@@ -17,6 +17,19 @@ namespace DA_Xuong.Controllers
             var db = _dbContext.TAIKHOAN.ToList();
             return View(db);
         }
+        public IActionResult ViewTaiKhoan()
+        {
+            return View();
+        }
+        public IActionResult AccountInfo(int userId)
+        {
+            var user = _dbContext.TAIKHOAN.FirstOrDefault(u => u.IDNGUOIDUNG == 1);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
 
         [HttpPost]
         public IActionResult Login(string emaildn, string matKhaudn)

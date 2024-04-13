@@ -24,6 +24,9 @@ namespace DA_Xuong.Controllers
             {
                 return NotFound(); 
             }
+            var sachList = _db.SACH.ToList(); 
+
+            ViewBag.sachList = sachList;    
 
             return View(sach);
         }

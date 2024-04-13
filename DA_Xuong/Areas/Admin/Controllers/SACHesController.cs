@@ -46,7 +46,7 @@ namespace DA_Xuong.Areas.Admin.Controllers
             return View(sACH);
         }
 
-        // GET: Admin/SACHes/Create
+        [Route("Admin/SACHes/Create")]
         public IActionResult Create()
         {
             ViewData["IDTACGIA"] = new SelectList(_context.TACGIA, "IDTACGIA", "IDTACGIA");

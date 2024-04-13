@@ -16,15 +16,14 @@ namespace DA_Xuong.Controllers
             _logger = logger;
             _db = db;
         }
-        
+
         public IActionResult Index()
         {
-            List<SACH> projects = _db.SACH.ToList();
-          
-            return View(projects);
-           
+            List<SACH> sachs = _db.SACH.Include(s => s.TacGia).ToList();
+            var theloai = _db.CHITIETTHELOAI.Include(tl => tl.IDLOAISACH);
+            return View(sachs);
         }
-        
+
         public IActionResult Privacy()
         {
             return View();

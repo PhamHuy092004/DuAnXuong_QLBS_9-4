@@ -8,6 +8,24 @@ $(document).ready(function () {
         $(this).next('.dropdown-menu').toggleClass('show');
     });
 });
+document.querySelectorAll('.minus-btn').forEach(function (button) {
+    button.addEventListener('click', function () {
+        var input = this.nextElementSibling;
+        var currentValue = parseInt(input.value);
+        if (currentValue > 1) {
+            input.value = currentValue - 1;
+        }
+    });
+});
+
+document.querySelectorAll('.plus-btn').forEach(function (button) {
+    button.addEventListener('click', function () {
+        var input = this.previousElementSibling;
+        var currentValue = parseInt(input.value);
+        input.value = currentValue + 1;
+    });
+});
+
 function addToCart() {
     document.getElementById("addToCartForm").submit();
 }
@@ -17,20 +35,3 @@ setTimeout(function () {
 setTimeout(function () {
     document.getElementById("errorMessage").style.display = "none";
 }, 3000);
-document.addEventListener('DOMContentLoaded', function () {
-    var minusButton = document.querySelector('.minus-btn');
-    var plusButton = document.querySelector('.plus-btn');
-    var inputField = document.querySelector('input[name="quantity"]');
-
-    minusButton.addEventListener('click', function () {
-        var currentValue = parseInt(inputField.value);
-        if (currentValue > 1) {
-            inputField.value = currentValue - 1;
-        }
-    });
-
-    plusButton.addEventListener('click', function () {
-        var currentValue = parseInt(inputField.value);
-        inputField.value = currentValue + 1;
-    });
-});
